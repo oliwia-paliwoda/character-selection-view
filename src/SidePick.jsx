@@ -30,7 +30,11 @@ function SidePick(){
           </div>
       </div>
 
-
+        <div className="text-box-container">
+            <div className="text">
+                Pick a side.
+            </div>
+        </div>
 
       </div>
     );
