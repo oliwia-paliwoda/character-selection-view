@@ -70,31 +70,3 @@
 
 }
 
-.text-box-container{
-  width: 20vw;
-  height: auto;
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 5vmin;
-  border-radius: 2px;
-  border: 2px solid #b49fed;
-  background: linear-gradient(to top, rebeccapurple, #431c60 50%);
-  box-shadow: 1px 1px 15px #b49fed;
-  justify-self: center;
-  background: #2f0945;
-  background-image:
-          linear-gradient(180deg,
-                  rgba(255, 255, 255, 0) 0%,
-                  rgb(179, 116, 227) 10%,
-                  rgba(255,255,255,0) 75%),
-
-}
-
-.text {
-  text-align: center;
-  color: white;
-  font-family: "Segoe UI Black";
-  text-shadow: 1px 1px 10px #b49fed;
-  padding: 2vmin;
-  font-style: italic;
-}
