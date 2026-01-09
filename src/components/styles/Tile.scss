@@ -1,0 +1,30 @@
+.tile {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: block;
+  transform: scale(0.5);
+}
+
+.tile .icon{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+.tile .rim{
+  filter: grayscale(100%) brightness(0) invert(0);
+  display: block;
+  position: absolute;
+  top: -35px;
+  left: -35px;
+}
+
+.tile:hover .rim{
+  filter: none;
+  display: block;
+  position: absolute;
+  top: -35px;
+  left: -35px;
+}

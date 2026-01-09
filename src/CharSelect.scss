@@ -1,0 +1,60 @@
+.container{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: #ccc;
+  transform: translateX(-25%);
+}
+
+.p1{
+  height: 100%;
+  background: linear-gradient(to top, #2c0840, #000000 40%);;
+  //background-image: url("./assets/T_UI_OperationCH_Guide_P1.png");
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  flex: 1 0 75%;
+  transform: translateX(10%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.p1.picking{
+  background: linear-gradient(to top, #6c0000 0%, #f43a3a 40%, #000000 100%);
+}
+
+.p2{
+  height: 100%;
+  background: linear-gradient(to top, #2c0840, #000000 40%);;
+  //background-image: url("./assets/T_UI_OperationCH_Guide_P2.png");
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+  flex: 1 0 75%;
+  transform: translateX(-5%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.p2.picking{
+  background: linear-gradient(to top, #004e6c, #00b2ed 40%, #000000 100%);
+}
+
+.roster{
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 15vmin;
+  width: 75vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
