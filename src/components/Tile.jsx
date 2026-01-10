@@ -1,12 +1,12 @@
 import "./styles/Tile.scss"
 
-function Tile({ character }) {
+function Tile({ character, onMouseEnter, onClick}) {
 
     character = character.toLowerCase();
     character = character.replace(/[ \-]/g, "_");
 
     return (
-        <div className="tile">
+        <div className="tile" onMouseEnter={onMouseEnter} onClick={onClick}>
         <img
             className="icon"
             src={`assets/characterIcons/${character}.png`}

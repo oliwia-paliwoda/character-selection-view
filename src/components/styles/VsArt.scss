@@ -1,0 +1,28 @@
+
+.art-container{
+ display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-p1{
+  width:60%;
+  height: auto;
+  padding-bottom: 15%;
+}
+
+.image-p1-hover{
+  @extend .image-p1;
+  filter: saturate(50%) saturate(10%) brightness(13%) blur(2px)
+}
+
+.image-p2{
+  @extend .image-p1;
+  transform: scaleX(-1);
+  padding-left: 10%;
+}
+
+.image-p2-hover{
+  @extend .image-p2;
+  filter: saturate(50%) saturate(10%) brightness(13%) blur(2px)
+}

@@ -1,7 +1,7 @@
 import Tile from "./Tile";
 import "./styles/Roster.scss"
 
-function Roster(){
+function Roster( {onHover, onSelected}){
 
     const row1 = [
         "ARMOR KING",
@@ -57,19 +57,19 @@ function Roster(){
         <div className="border">
             <div className="row">
                 {row1.map((character) => (
-                    <Tile key={character} character={character} />
+                    <Tile key={character} character={character} onMouseEnter = {() => onHover(character)} onClick = {() => onSelected(character)}/>
                     )
                 )}
             </div>
             <div className="row">
                 {row2.map((character) => (
-                        <Tile key={character} character={character} />
+                        <Tile key={character} character={character} onMouseEnter = {() => onHover(character)} onClick = {() => onSelected(character)}/>
                     )
                 )}
             </div>
             <div className="row">
                 {row3.map((character) => (
-                        <Tile key={character} character={character} />
+                        <Tile key={character} character={character} onMouseEnter = {() => onHover(character)} onClick = {() => onSelected(character)}/>
                     )
                 )}
             </div>
