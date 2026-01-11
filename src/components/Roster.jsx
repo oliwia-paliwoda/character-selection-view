@@ -45,7 +45,7 @@ function Roster( {onHover, onSelected}){
         "LARS",
         "JUN",
         "DEVIL JIN",
-        "JACK-6",
+        "JACK-8",
         "KING",
         "STEVE",
         "DRAGUNOV",
