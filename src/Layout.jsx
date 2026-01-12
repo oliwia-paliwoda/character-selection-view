@@ -12,7 +12,8 @@ const SCREENS = {
     },
     charSelect: {
         component: CharSelect,
-        message: "PICK A CHARACTER"
+        message: "PICK A CHARACTER",
+        playerSide: undefined,
     }
 }
 
@@ -25,6 +26,7 @@ function Layout() {
     const handlePickSide = (side) => {
         setChosenSide(side);
         setScreenState("charSelect");
+        SCREENS.charSelect.playerSide = side;
     };
 
     const CurrentScreen = SCREENS[screenState].component;
@@ -37,7 +39,7 @@ function Layout() {
           {screenState === "sideSelect" ? (
             <CurrentScreen onPickSide={handlePickSide}></CurrentScreen>
           ) : (
-              <CurrentScreen/>
+              <CurrentScreen playerSide={SCREENS.charSelect.playerSide} />
           )
           }
 

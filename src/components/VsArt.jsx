@@ -10,13 +10,13 @@ function VsArt( {character, side, state}) {
         <div className="art-container">
             {side === "p1" ? (
              <img
-                className={state === "selected" ? "image-p1" : "image-p1-hover"}
+                className={state ? "image-p1" : "image-p1-hover"}
                 src={`assets/vsArt/${character}.png`}
                 />
             ) :
                 (
                     <img
-                        className="image-p2-hover"
+                        className={state ? "image-p2" : "image-p2-hover"}
                         src={`assets/vsArt/${character}.png`}
                     />
                 )

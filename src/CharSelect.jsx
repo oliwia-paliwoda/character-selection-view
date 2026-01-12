@@ -5,44 +5,105 @@ import Roster from "./components/Roster";
 import VsArt from "./components/VsArt";
 import {useEffect} from "react";
 
-function CharSelect() {
+function CharSelect( {playerSide}) {
 
+    const [scale, setScale] = React.useState(1);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            const newScale = width / 1920;
+            setScale(newScale);
+        };
+
+        window.addEventListener("resize", handleResize);
+        handleResize();
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    const [currentTurn, setCurrentTurn] = React.useState(playerSide);
     const [hoveredCharacter, setHoveredCharacter] = React.useState(undefined);
-    const [selectedCharacter, setSelectedCharacter] = React.useState(undefined);
-    const [selectionState, setSelectionState] = React.useState(undefined);
+
+    const [playerCharacter, setPlayerCharacter] = React.useState(undefined);
+    const [opponentCharacter, setOpponentCharacter] = React.useState(undefined);
+
+    const toggleTurn = {
+        P1: "P2",
+        P2: "P1"
+    };
+
+    const p1HasChar =
+        playerSide === "P1" ? playerCharacter : opponentCharacter;
+
+    const p2HasChar =
+        playerSide === "P2" ? playerCharacter : opponentCharacter;
+
+
 
     const handleCharHover = (character) => {
-        setHoveredCharacter(character);
+
+        if (currentTurn === playerSide && playerCharacter !== undefined) {
+            return;
+        } else setHoveredCharacter(character);
     };
 
     const handleCharSelect = (character) => {
-        setSelectedCharacter(character);
+        if(currentTurn === playerSide) {
+            setPlayerCharacter(character);
+        } else {
+            setOpponentCharacter(character);
+        }
+
+        setCurrentTurn(prev => toggleTurn[prev]);
     }
 
 
     useEffect(() => {
-        if (selectedCharacter !== undefined) {
-            setSelectionState("selected");
-            console.log("state selected");
+        if(playerCharacter !== undefined && opponentCharacter !== undefined) {
+            console.error(playerCharacter, opponentCharacter);
         }
-    }, [selectedCharacter]);
+    }, [playerCharacter, opponentCharacter]);
 
     return (
         <div className="container">
             <div className="wrapper">
 
-                <div className="p1 picking">
-                    <VsArt character={hoveredCharacter} state={selectionState} side={"p1"}></VsArt>
+                <div
+                    className={`p1 ${
+                        currentTurn === "P1" || p1HasChar ? "picking" : ""
+                    }`}
+                >
+                    {(currentTurn === "P1" || p1HasChar) && (
+                        <VsArt
+                            character={p1HasChar ?? hoveredCharacter}
+                            side="p1"
+                            state={p1HasChar}
+                        />
+                    )}
                 </div>
 
-                <div className="p2">
-                    <VsArt character={hoveredCharacter} state={selectionState} side={"p2"}></VsArt>
+                <div
+                    className={`p2 ${
+                        currentTurn === "P2" || p2HasChar ? "picking" : ""
+                    }`}
+                >
+                    {(currentTurn === "P2" || p2HasChar) && (
+                        <VsArt
+                            character={p2HasChar ?? hoveredCharacter}
+                            side="p2"
+                            state={p2HasChar}
+                        />
+                    )}
                 </div>
+
+
             </div>
 
-           <div className="roster">
+            {!opponentCharacter &&
+           <div className="roster" style={{ transform: `scale(${scale})`}}>
            <Roster onHover={handleCharHover} onSelected={handleCharSelect} />
            </div>
+            }
 
         </div>
     )
