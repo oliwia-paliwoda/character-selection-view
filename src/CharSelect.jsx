@@ -5,7 +5,7 @@ import Roster from "./components/Roster";
 import VsArt from "./components/VsArt";
 import {useEffect} from "react";
 
-function CharSelect( {playerSide}) {
+function CharSelect({playerSide}) {
 
     const [scale, setScale] = React.useState(1);
 
@@ -38,17 +38,19 @@ function CharSelect( {playerSide}) {
     const p2HasChar =
         playerSide === "P2" ? playerCharacter : opponentCharacter;
 
+    const isP1Active = currentTurn === "P1" || p1HasChar;
+    const isP2Active = currentTurn === "P2" || p2HasChar;
 
 
     const handleCharHover = (character) => {
 
         if (currentTurn === playerSide && playerCharacter !== undefined) {
-            return;
+
         } else setHoveredCharacter(character);
     };
 
     const handleCharSelect = (character) => {
-        if(currentTurn === playerSide) {
+        if (currentTurn === playerSide) {
             setPlayerCharacter(character);
         } else {
             setOpponentCharacter(character);
@@ -59,7 +61,7 @@ function CharSelect( {playerSide}) {
 
 
     useEffect(() => {
-        if(playerCharacter !== undefined && opponentCharacter !== undefined) {
+        if (playerCharacter !== undefined && opponentCharacter !== undefined) {
             console.error(playerCharacter, opponentCharacter);
         }
     }, [playerCharacter, opponentCharacter]);
@@ -68,31 +70,33 @@ function CharSelect( {playerSide}) {
         <div className="container">
             <div className="wrapper">
 
-                <div
-                    className={`p1 ${
-                        currentTurn === "P1" || p1HasChar ? "picking" : ""
-                    }`}
+                <div className={`p1 ${isP1Active ? "picking" : ""}`}
                 >
-                    {(currentTurn === "P1" || p1HasChar) && (
-                        <VsArt
-                            character={p1HasChar ?? hoveredCharacter}
-                            side="p1"
-                            state={p1HasChar}
-                        />
+                    {isP1Active && (
+                        <>
+                            <div className="char-name-p1">{p1HasChar ?? hoveredCharacter}</div>
+
+                            <VsArt
+                                character={p1HasChar ?? hoveredCharacter}
+                                side="p1"
+                                state={p1HasChar}
+                            />
+                        </>
                     )}
                 </div>
 
                 <div
-                    className={`p2 ${
-                        currentTurn === "P2" || p2HasChar ? "picking" : ""
-                    }`}
+                    className={`p2 ${isP2Active ? "picking" : ""}`}
                 >
-                    {(currentTurn === "P2" || p2HasChar) && (
-                        <VsArt
-                            character={p2HasChar ?? hoveredCharacter}
-                            side="p2"
-                            state={p2HasChar}
-                        />
+                    {isP2Active && (
+                        <>
+                            <div className="char-name-p2">{p2HasChar ?? hoveredCharacter}</div>
+                            <VsArt
+                                character={p2HasChar ?? hoveredCharacter}
+                                side="p2"
+                                state={p2HasChar}
+                            />
+                        </>
                     )}
                 </div>
 
@@ -100,9 +104,9 @@ function CharSelect( {playerSide}) {
             </div>
 
             {!opponentCharacter &&
-           <div className="roster" style={{ transform: `scale(${scale})`}}>
-           <Roster onHover={handleCharHover} onSelected={handleCharSelect} />
-           </div>
+                <div className="roster" style={{transform: `scale(${scale})`}}>
+                    <Roster onHover={handleCharHover} onSelected={handleCharSelect}/>
+                </div>
             }
 
         </div>
