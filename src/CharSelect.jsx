@@ -1,16 +1,19 @@
-import Tile from "./components/Tile"
 import React from "react";
 import "./CharSelect.scss";
 import Roster from "./components/Roster";
 import VsArt from "./components/VsArt";
 import {useEffect} from "react";
 import CharacterName from "./components/CharacterName";
+import {preloadImages} from "./preloadImages";
 
 function CharSelect({playerSide}) {
 
     const [scale, setScale] = React.useState(1);
 
     useEffect(() => {
+
+        preloadImages();
+
         const handleResize = () => {
             const width = window.innerWidth;
             const newScale = width / 1920;
@@ -21,6 +24,7 @@ function CharSelect({playerSide}) {
         handleResize();
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
 
     const [currentTurn, setCurrentTurn] = React.useState(playerSide);
     const [hoveredCharacter, setHoveredCharacter] = React.useState(undefined);
