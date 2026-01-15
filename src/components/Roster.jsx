@@ -1,57 +1,14 @@
 import Tile from "./Tile";
 import "./styles/Roster.scss"
+import characters from "../characters.json";
 
 function Roster( {onHover, onSelected}){
 
-    const row1 = [
-        "ARMOR KING",
-        "EDDY",
-        "CLAUDIO",
-        "ZAFINA",
-        "PAUL",
-        "RAVEN",
-        "VICTOR",
-        "REINA",
-        "AZUCENA",
-        "SHAHEEN",
-        "LAW",
-        "LEROY",
-        "LEO",
-        "LIDIA",
-        "MIARY ZO"
-    ]
+    const row1 = characters.slice(0,15);
 
-    const row2 = [
-        "HEIHACHI",
-        "PANDA",
-        "ASUKA",
-        "LEE",
-        "XIAOYU",
-        "JIN",
-        "RANDOM",
-        "KAZUYA",
-        "NINA",
-        "HWOARANG",
-        "FENG",
-        "YOSHIMITSU",
-        "CLIVE",
-    ]
+    const row2 = characters.slice(15,28);
 
-    const row3 = [
-        "ANNA",
-        "KUMA",
-        "LILI",
-        "ALISA",
-        "LARS",
-        "JUN",
-        "DEVIL JIN",
-        "JACK-8",
-        "KING",
-        "STEVE",
-        "DRAGUNOV",
-        "BRYAN",
-        "FAHKUMRAM"
-    ]
+    const row3 = characters.slice(28,characters.length);
 
     return(
         <div className="border">

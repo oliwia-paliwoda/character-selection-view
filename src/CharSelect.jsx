@@ -4,6 +4,7 @@ import "./CharSelect.scss";
 import Roster from "./components/Roster";
 import VsArt from "./components/VsArt";
 import {useEffect} from "react";
+import CharacterName from "./components/CharacterName";
 
 function CharSelect({playerSide}) {
 
@@ -74,7 +75,11 @@ function CharSelect({playerSide}) {
                 >
                     {isP1Active && (
                         <>
-                            <div className="char-name-p1">{p1HasChar ?? hoveredCharacter}</div>
+                            {hoveredCharacter && (
+                                <div className="character-name-p1">
+                            <CharacterName character={p1HasChar ?? hoveredCharacter} />
+                                </div>
+                                )}
 
                             <VsArt
                                 character={p1HasChar ?? hoveredCharacter}
@@ -90,7 +95,11 @@ function CharSelect({playerSide}) {
                 >
                     {isP2Active && (
                         <>
-                            <div className="char-name-p2">{p2HasChar ?? hoveredCharacter}</div>
+                            {hoveredCharacter && (
+                                <div className="character-name-p2">
+                                    <CharacterName character={p2HasChar ?? hoveredCharacter} />
+                                </div>
+                            )}
                             <VsArt
                                 character={p2HasChar ?? hoveredCharacter}
                                 side="p2"
