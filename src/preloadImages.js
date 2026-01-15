@@ -1,4 +1,4 @@
-import characters from "../characters.json";
+import characters from "./characters.json";
 
 export function preloadImages() {
     characters.forEach(name => {
