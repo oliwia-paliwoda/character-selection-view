@@ -90,3 +90,63 @@
   justify-content: flex-end;
 
 }
+
+.player-label-p1{
+  position: absolute;
+  z-index: 2;
+  left: 25%;
+}
+
+.player-label-p2{
+  position: absolute;
+  z-index: 2;
+  right: 30%;
+}
+
+.player-label-p1 img{
+  width: 20vmin;
+  height: auto;
+}
+
+.player-label-p2 img{
+  width: 20vmin;
+  height: auto;
+}
+
+.vs{
+  z-index: 3;
+  margin: auto;
+  position: absolute;
+}
+
+.vs img{
+  width: 60vmin;
+  height: auto;
+}
+
+.vs-screen-background-p1{
+  position: absolute;
+  z-index: -3;
+  padding-right:520px;
+}
+
+.vs-screen-background-p2{
+  position: absolute;
+  z-index: -3;
+  padding-left:420px;
+}
+
+.vs-screen-background-p1 img{
+  width: 2000px;
+  height: auto;
+  transform: scaleX(-1);
+  clip-path: inset(0 0 500px 0);
+  opacity: 0.4;
+}
+
+.vs-screen-background-p2 img{
+  width: 2000px;
+  height: auto;
+  clip-path: inset(0 0 500px 0);
+  opacity: 0.4;
+}

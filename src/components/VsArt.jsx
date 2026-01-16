@@ -4,7 +4,8 @@ function VsArt( {character, side, state}) {
     if (!character) return null;
 
     character = character.toLowerCase();
-    character = character.replace(/[ \-]/g, "_");
+    character = character.replace(/[ \-]/g, "_")
+    if (character === "random") return null;
 
     return (
         <div className="art-container">

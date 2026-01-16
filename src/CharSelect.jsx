@@ -5,6 +5,11 @@ import VsArt from "./components/VsArt";
 import {useEffect} from "react";
 import CharacterName from "./components/CharacterName";
 import {preloadImages} from "./preloadImages";
+import p1You from './assets/T_UI_OperationCH_Guide_YOU_Red.png';
+import p2You from './assets/T_UI_OperationCH_Guide_YOU_Blue.png';
+import vs from "./assets/T_UI_Makuai_VS2.png";
+import vsBackground from "./assets/T_UI_HUD_Zone_Icon_Enable3.png";
+import CharRandomize from "./CharRandomize";
 
 function CharSelect({playerSide}) {
 
@@ -55,6 +60,9 @@ function CharSelect({playerSide}) {
     };
 
     const handleCharSelect = (character) => {
+        if (character==="RANDOM") {
+            character = CharRandomize();
+        }
         if (currentTurn === playerSide) {
             setPlayerCharacter(character);
         } else {
@@ -79,6 +87,12 @@ function CharSelect({playerSide}) {
                 >
                     {isP1Active && (
                         <>
+                            {playerSide === "P1" && (
+                            <div className="player-label-p1">
+                                <img src={p1You} alt="you"/>
+                                </div>
+                            )}
+
                             {hoveredCharacter && (
                                 <div className="character-name-p1">
                             <CharacterName character={p1HasChar ?? hoveredCharacter} />
@@ -92,6 +106,15 @@ function CharSelect({playerSide}) {
                             />
                         </>
                     )}
+
+                    {opponentCharacter &&
+                        <div className="vs-screen-background-p1">
+                            <img
+                                src={vsBackground}
+                            />
+                        </div>
+                    }
+
                 </div>
 
                 <div
@@ -99,6 +122,12 @@ function CharSelect({playerSide}) {
                 >
                     {isP2Active && (
                         <>
+                            {playerSide === "P2" && (
+                                <div className="player-label-p2">
+                                    <img src={p2You} alt="you"/>
+                                </div>
+                            )}
+
                             {hoveredCharacter && (
                                 <div className="character-name-p2">
                                     <CharacterName character={p2HasChar ?? hoveredCharacter} />
@@ -111,10 +140,25 @@ function CharSelect({playerSide}) {
                             />
                         </>
                     )}
+
+                    {opponentCharacter &&
+                        <div className="vs-screen-background-p2">
+                            <img
+                                src={vsBackground}
+                                />
+                        </div>
+                    }
                 </div>
 
-
             </div>
+
+            {opponentCharacter && <div className="vs">
+                <img
+                    src={vs}
+                    alt="vs"
+                />
+            </div>
+            }
 
             {!opponentCharacter &&
                 <div className="roster" style={{transform: `scale(${scale})`}}>
